@@ -67,7 +67,7 @@ app.get("/all-cv", function(req, res) {
     })
 })
 
-app.post("/", function(req, res) {
+app.post("/post-data", function(req, res) {
     let newApplicant = new Applicant({
         name: req.body.name,
         totalExp : req.body.exp,
