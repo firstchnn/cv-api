@@ -7,6 +7,15 @@ const { ObjectId, Int32, Decimal128, Binary } = require('bson');
 const { stringify } = require('querystring');
 const port = process.env.PORT || 4000;
 const cors = require('cors');
+const multer = require('multer');
+
+//define storage for pdf files
+
+// const storage = multer.diskStorage({
+//     destination: function (request, file, callback) {
+//         callback(nill, '')
+//     }
+// })
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -82,7 +91,7 @@ app.post("/post-data", function(req, res) {
         interviewDate : req.body.interviewDate,
         startDate : req.body.startDate,
         status : req.body.status,
-        CV : req.body.cv,
+        CV : req.file.CV,
     });
 
     let newMajorSkills = new MajorSkills({
