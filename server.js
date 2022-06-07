@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const { ObjectId, Int32, Decimal128, Binary } = require('bson');
 const { stringify } = require('querystring');
 const port = process.env.PORT || 4000;
-// const cors = require('cors');
+const cors = require('cors');
 
 
 //define storage for pdf files
@@ -17,7 +17,7 @@ const port = process.env.PORT || 4000;
 //     }
 // })
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(multer);
 app.set('view engine', 'ejs');
@@ -91,7 +91,7 @@ app.post("/", function(req, res) {
         interviewDate : req.body.interviewDate,
         startDate : req.body.startDate,
         status : req.body.status,
-        CV : req.file.CV,
+        CV : req.body.cv,
     });
 
     let newMajorSkills = new MajorSkills({
@@ -115,7 +115,7 @@ app.post("/", function(req, res) {
     newMajorSkills.save();
     newMinorSkills.save();
     newLanguageSkills.save();
-    res.redirect('/');
+    res.redirect('https://cv-frontend-bb249.web.app/');
 })
 
 app.listen(port, function() {
