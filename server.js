@@ -115,7 +115,7 @@ app.post("/", function(req, res) {
     newMajorSkills.save();
     newMinorSkills.save();
     newLanguageSkills.save();
-    res.redirect('/');
+    res.redirect('https://cv-frontend-bb249.web.app/');
 })
 
 app.listen(port, function() {
