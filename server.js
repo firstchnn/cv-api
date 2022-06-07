@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const { ObjectId, Int32, Decimal128, Binary } = require('bson');
 const { stringify } = require('querystring');
 const port = process.env.PORT || 4000;
-const cors = require('cors');
+// const cors = require('cors');
 
 
 //define storage for pdf files
@@ -17,7 +17,7 @@ const cors = require('cors');
 //     }
 // })
 
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(multer);
 app.set('view engine', 'ejs');
