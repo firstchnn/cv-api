@@ -105,7 +105,16 @@ app.post("/upload", function(req, res) {
     insertFile(file, res)
     res.redirect('https://cv-frontend-bb249.web.app/');
 })
+app.post("/extract-text", (req, res) => {
+    if(!req.files && !req.files.pdfFile){
+        res.status(400);
+        res.end();
+    }
 
+    pdfParse(req.files.pdfFile).then(result => {
+        res.send(result.text);
+    })
+})
 async function insertFile(file, res) {
     await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
         if (err) {
