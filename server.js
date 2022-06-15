@@ -4,20 +4,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const { ObjectId, Int32, Decimal128, Binary } = require('bson');
-const { stringify } = require('querystring');
 const port = process.env.PORT || 4000;
 const cors = require('cors');
-const path = require('path');
-const multer = require('multer')
-const crypto = require('crypto');
-const GridFsStorage = require('multer-gridfs-storage').GridFsStorage;
-const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const mongodb = require('mongodb');
 const binary = mongodb.Binary;
-const mongoClient = mongodb.MongoClient
+const mongoClient = mongodb.MongoClient;
+const pdfParse = require("pdf-parse");
 
 app.use(cors());
 app.use(fileUpload());
