@@ -14,7 +14,7 @@ const binary = mongodb.Binary;
 const mongoClient = mongodb.MongoClient;
 const pdfParse = require("pdf-parse");
 
-// app.use(cors());
+app.use(cors());
 app.use(fileUpload());
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
