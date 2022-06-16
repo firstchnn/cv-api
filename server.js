@@ -98,7 +98,7 @@ app.post("/upload", function(req, res) {
         status : req.body.status,
         file : binary(req.files.uploadedFile.data), }
     insertFile(file, res)
-    res.redirect('https://cv-frontend-bb249.web.app/uploadPage.html');
+    res.redirect('https://lucky-druid-669a9d.netlify.app/newApp');
 })
 app.post("/extract-text", (req, res) => {
     if(!req.files && !req.files.pdfFile){
