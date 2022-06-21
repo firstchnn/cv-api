@@ -63,14 +63,28 @@ const languageSkillSchema = {
     applicantName : String,
 }
 
+const skillsetSchema = {
+    name : String,
+    category : String,
+}
+
 const Applicant = mongoose.model("Applicant",applicantSchema);
 const MajorSkills = mongoose.model("MajorSkills", majorSkillSchema);
 const MinorSkills = mongoose.model("MinorSkills", minorSkillSchema);
 const LanguageSkills = mongoose.model("LanguageSkills", languageSkillSchema);
+const Skillsets = mongoose.model("Skillsets", skillsetSchema);
 
 
 app.get("/all-cv", function(req, res) {
     Applicant.find().then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+app.get("/all-skill", function(req, res) {
+    Skillsets.find().then((result) => {
         res.send(result);
     }).catch((err) => {
         console.log(err);
@@ -100,6 +114,14 @@ app.post("/upload", function(req, res) {
     insertFile(file, res)
     res.redirect('https://lucky-druid-669a9d.netlify.app/newApp');
 })
+
+app.post("/update-skill", function(req, res) {
+    let file = { skill: req.body.skill,
+        category : req.body.category,}
+    insertSkill(file, res)
+    res.redirect('https://lucky-druid-669a9d.netlify.app/manageSkill');
+})
+
 app.post("/extract-text", (req, res) => {
     if(!req.files && !req.files.pdfFile){
         res.status(400);
@@ -118,6 +140,28 @@ async function insertFile(file, res) {
         else {
             let db = client.db('applicantDB')
             let collection = db.collection('applicants')
+            try {
+                collection.insertOne(file)
+                console.log('File Inserted')
+            }
+            catch (err) {
+                console.log('Error while inserting:', err)
+            }
+            // client.close()
+            // res.redirect('/')
+        }
+
+    })
+}
+
+async function insertSkill(file, res) {
+    await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
+        if (err) {
+            return err
+        }
+        else {
+            let db = client.db('applicantDB')
+            let collection = db.collection('skillsets')
             try {
                 collection.insertOne(file)
                 console.log('File Inserted')
