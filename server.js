@@ -123,6 +123,14 @@ app.post("/upload", function(req, res) {
         for(let i = 0 ; i < pl.length; i++){
             db.push(Object.values(Object.values(pl[i])[2])[1]);
         }
+        for(let i = 0 ; i < allSkill.length; i++){
+            for(let j = 0 ; j < pl.length; j++){
+                if(allSkill[i] == Object.values(Object.values(pl[i])[2])[1]){
+                    tools.push(Object.values(Object.values(pl[i])[2])[1]);
+                    break;
+                }
+            }
+        }
     }).catch((err) => {
         console.log(err);
     })
