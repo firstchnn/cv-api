@@ -116,7 +116,7 @@ app.post("/upload", function(req, res) {
             temp.push(result[i]);
         }
         for(let i = 0 ; i < pl.length; i++){
-            skillsetData.push(Object.values(Object.values(pl[i])[2]));
+            skillsetData.push(Object.values(Object.values(temp[i])[2]));
         }
     }).catch((err) => {
         console.log(err);
