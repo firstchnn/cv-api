@@ -101,11 +101,12 @@ app.get("/download", function(req,res) {
 })
 
 app.post("/upload", function(req, res) {
-    let os = ["ios"];
-    let pl = ["java","python"];
-    let db = ["mongodb","oracle"];
-    let tools = ["vscode"];
+    
     let allSkill = req.body.majorSkill.split(',');
+    let os = getOS(allSkill);
+    let pl = getPL(allSkill);
+    let db = getDB(allSkill);
+    let tools = getIDE(allSkill);
     // os,pl,db,tools = classifier(os,pl,db,tools,allSkill);
     // console.log(os);
     // console.log(pl);
@@ -242,6 +243,102 @@ async function classifier(os, pl, dbs, tools, allSkill) {
                 }
             }
             return {os, pl, dbs, tools};
+            // client.close()
+        }
+
+    })
+}
+
+async function getOS(allSkill) {
+    let os = [];
+    await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
+        if (err) {
+            return err
+        }
+        else {
+            let db = client.db('applicantDB')
+            let collection = db.collection('skillsets')
+            let majorSkill = collection.find({});
+            for(let i = 0; i < majorSkill.length ; i++){
+                if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
+                    if(majorSkill[i].category === "Operating System"){
+                        os.push(allSkill[i]);
+                    }
+                }
+            }
+            return os;
+            // client.close()
+        }
+
+    })
+}
+
+async function getPL(allSkill) {
+    let pl = [];
+    await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
+        if (err) {
+            return err
+        }
+        else {
+            let db = client.db('applicantDB')
+            let collection = db.collection('skillsets')
+            let majorSkill = collection.find({});
+            for(let i = 0; i < majorSkill.length ; i++){
+                if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
+                    if(majorSkill[i].category === "Programming Language"){
+                        pl.push(allSkill[i]);
+                    }
+                }
+            }
+            return pl;
+            // client.close()
+        }
+
+    })
+}
+
+async function getDB(allSkill) {
+    let dbs = [];
+    await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
+        if (err) {
+            return err
+        }
+        else {
+            let db = client.db('applicantDB')
+            let collection = db.collection('skillsets')
+            let majorSkill = collection.find({});
+            for(let i = 0; i < majorSkill.length ; i++){
+                if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
+                    if(majorSkill[i].category === "Database"){
+                        dbs.push(allSkill[i]);
+                    }
+                }
+            }
+            return dbs;
+            // client.close()
+        }
+
+    })
+}
+
+async function getIDE(allSkill) {
+    let tools = [];
+    await mongoClient.connect('mongodb+srv://chnw-admin:chnw1234@cluster0.8ckv3.mongodb.net/applicantDB', { useNewUrlParser: true }, (err, client) => {
+        if (err) {
+            return err
+        }
+        else {
+            let db = client.db('applicantDB')
+            let collection = db.collection('skillsets')
+            let majorSkill = collection.find({});
+            for(let i = 0; i < majorSkill.length ; i++){
+                if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
+                    if(majorSkill[i].category === "Tools and IDE"){
+                        tools.push(allSkill[i]);
+                    }
+                }
+            }
+            return tools;
             // client.close()
         }
 
