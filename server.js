@@ -125,6 +125,7 @@ app.post("/upload", function(req, res) {
         }
         for(let i = 0 ; i < pl.length; i++){
             db.push(Object.values(Object.values(pl[i])[2])[1]);
+            tools.push(Object.values(Object.values(pl[i])[2])[2]);
         }
         for(let i = 0 ; i < allSkill.length; i++){
             for(let j = 0 ; j < pl.length; j++){
@@ -139,7 +140,7 @@ app.post("/upload", function(req, res) {
                     }
                     if(Object.values(Object.values(pl[j])[2][2] == "Database")){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastDB.push(i);
+                        lastDB.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                     if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
@@ -152,7 +153,7 @@ app.post("/upload", function(req, res) {
                      //is skill input category is tools
                      if(Object.values(Object.values(pl[j])[2][2] == "Tools and IDE")){
                         lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastIDE.push(i);
+                        lastIDE.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                 }
@@ -185,6 +186,8 @@ app.post("/upload", function(req, res) {
         pl : lastPL,
         db : lastDB,
         tools : lastIDE,
+        skillname : db,
+        category : tools,
         majorExp : req.body.majorExp,
         minorSkill : req.body.minorSkill,
         minorExp : req.body.minorExp,
