@@ -105,13 +105,13 @@ app.post("/upload", function(req, res) {
     let allSkill = req.body.majorSkill.split(',');
     console.log(allSkill);
     let skillsetData = [];
+    let temp = [];
     let os = [];
     let pl = [];
     let db = [];
     let tools = [];
     Skillsets.find().then((result) => {
         skillsetData.push(result);
-        let temp = [];
         for(let i = 0; i < result.length; i++){
             temp.push(result[i]);
         }
@@ -121,16 +121,17 @@ app.post("/upload", function(req, res) {
     }).catch((err) => {
         console.log(err);
     })
-    for(let i = 0; i < allSkill.length; i++){
-        for(let j = 0; j < skillsetData.length; j++){
-            if(allSkill[i] === skillsetData[j][1]){
-                if(skillsetData[j][2] === "Operating System"){
-                    os.push(allSkill[i]);
-                    break;
-                }
-            }
-        }
-    }
+    // for(let i = 0; i < allSkill.length; i++){
+    //     for(let j = 0; j < skillsetData.length; j++){
+    //         if(allSkill[i] === skillsetData[j][1]){
+    //             if(skillsetData[j][2] === "Operating System"){
+    //                 os.push(allSkill[i]);
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
+    db.push(skillsetData);
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
