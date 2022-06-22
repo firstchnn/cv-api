@@ -104,15 +104,29 @@ app.post("/upload", function(req, res) {
     
     let allSkill = req.body.majorSkill.split(',');
     console.log(allSkill);
-    let os = getOS(allSkill);
-    let pl = getPL(allSkill);
-    let db = getDB(allSkill);
-    let tools = getIDE(allSkill);
+    let os = [];
+    let pl = [];
+    let db = [];
+    let tools = [];
     // os,pl,db,tools = classifier(os,pl,db,tools,allSkill);
     // console.log(os);
     // console.log(pl);
     // console.log(db);
     // console.log(tools);
+    SkillSets.find().then((result) => {
+        for(let i = 0; i < allSkill.length ; i++){
+            for(let j = 0; j< result.length ; j++){
+                if(allSkill[i].toLowerCase() === result[j].skill.toLowerCase()){
+                    if(result[j].category === "Operating System"){
+                        os.push(allSkill[i]);
+                    }
+                }
+            }
+
+        }
+    }).catch((err) => {
+        console.log(err);
+    })
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
