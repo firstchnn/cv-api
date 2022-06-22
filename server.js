@@ -132,28 +132,28 @@ app.post("/upload", function(req, res) {
                 //is this skillsets contain this skill input
                 if(allSkill[i].toLowerCase() === Object.values(Object.values(pl[j])[2])[1].toLowerCase()){
                     //is skill input category is os
-                    if(Object.values(Object.values(pl[j])[2])[2] === "Operating System"){
+                    if(!Object.values(Object.values(pl[j])[2])[2].localeCompare("Operating System")){
                         lastOS.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastOS.push(i);
+                        // lastOS.push(i);
                         break;
                      //is skill input category is programming lang
                     }
-                    if(Object.values(Object.values(pl[j])[2][2] === "Database")){
+                    if(!Object.values(Object.values(pl[j])[2][2].localeCompare("Database"))){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastDB.push(Object.values(Object.values(pl[j])[2])[2] === "Database");
+                        // lastDB.push(Object.values(Object.values(pl[j])[2])[2] === "Database");
                         break;
                     }
-                    if(Object.values(Object.values(pl[j])[2][2] === "Programming Language")){
+                    if(!Object.values(Object.values(pl[j])[2][2].localeCompare("Programming Language"))){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastPL.push(Object.values(Object.values(pl[j])[2])[2]);
+                        // lastPL.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                      //is skill input category is database
                     
                      //is skill input category is tools
-                     if(Object.values(Object.values(pl[j])[2][2] === "Tools and IDE")){
+                     if(!Object.values(Object.values(pl[j])[2][2].localeCompare("Tools and IDE"))){
                         lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastIDE.push(Object.values(Object.values(pl[j])[2])[2]);
+                        // lastIDE.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                 }
