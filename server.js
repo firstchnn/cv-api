@@ -136,17 +136,18 @@ app.post("/upload", function(req, res) {
                         lastOS.push(i);
                         break;
                      //is skill input category is programming lang
+                    }
+                    else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
+                        lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
+                        lastDB.push(i);
+                        break;
                     }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastPL.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                      //is skill input category is database
-                    else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
-                        lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastDB.push(i);
-                        break;
-                    }
+                    
                      //is skill input category is tools
                     else{
                         lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
