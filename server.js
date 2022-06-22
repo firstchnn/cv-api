@@ -120,16 +120,20 @@ app.post("/upload", function(req, res) {
         console.log(err);
     })
 
-    for(let i = 0 ; i < allSkill.length ; i++ ){
-        for(let j = 0 ; j< skillsetData.length; j++){
-            if(allSkill[i].toLowerCase() === skillsetData[j].skill.toLowerCase()){
-                // if(skillsetData[j].category === "Programming Language"){
-                //     pl.push(allSkill[i]);
-                // }
-                pl.push(allSkill[i]);
-            }
-        }
+    for(let i = 0; i < skillsetData.length; i++) {
+        pl.push(skillsetData[i].skill);
     }
+
+    // for(let i = 0 ; i < allSkill.length ; i++ ){
+    //     for(let j = 0 ; j< skillsetData.length; j++){
+    //         if(allSkill[i].toLowerCase() === skillsetData[j].skill.toLowerCase()){
+    //             // if(skillsetData[j].category === "Programming Language"){
+    //             //     pl.push(allSkill[i]);
+    //             // }
+    //             pl.push(allSkill[i]);
+    //         }
+    //     }
+    // }
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
