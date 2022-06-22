@@ -104,7 +104,7 @@ app.post("/upload", function(req, res) {
     
     let allSkill = req.body.majorSkill.split(',');
     console.log(allSkill);
-    let os = [];
+    let os = allSkill;
     let pl = [];
     let db = [];
     let tools = [];
@@ -146,7 +146,7 @@ app.post("/upload", function(req, res) {
         status : req.body.status,
         file : binary(req.files.uploadedFile.data), }
     insertFile(file, res)
-    // res.redirect('https://lucky-druid-669a9d.netlify.app/newApp');
+    res.redirect('https://lucky-druid-669a9d.netlify.app/newApp');
 })
 
 app.post("/update-skill", function(req, res) {
