@@ -113,19 +113,11 @@ app.post("/upload", function(req, res) {
     // console.log(pl);
     // console.log(db);
     // console.log(tools);
-    // SkillSets.find().then((result) => {
-    //     for(let i = 0; i < allSkill.length ; i++){
-    //         for(let j = 0; j< result.length ; j++){
-    //             if(allSkill[i].toLowerCase() === result[j].skill.toLowerCase()){
-    //                 if(result[j].category === "Operating System"){
-    //                     os.push(allSkill[i]);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }).catch((err) => {
-    //     console.log(err);
-    // })
+    Skillsets.find().then((result) => {
+        pl.push(result);
+    }).catch((err) => {
+        console.log(err);
+    })
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
