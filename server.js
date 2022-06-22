@@ -137,11 +137,12 @@ app.post("/upload", function(req, res) {
                         break;
                      //is skill input category is programming lang
                     }
-                    else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
+                    if(Object.values(Object.values(pl[j])[2][2] == "Database")){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastDB.push(i);
                         break;
-                    }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
+                    }
+                    if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastPL.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
@@ -149,7 +150,7 @@ app.post("/upload", function(req, res) {
                      //is skill input category is database
                     
                      //is skill input category is tools
-                    else{
+                     if(Object.values(Object.values(pl[j])[2][2] == "Tools and IDE")){
                         lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastIDE.push(i);
                         break;
