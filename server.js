@@ -114,6 +114,7 @@ app.post("/upload", function(req, res) {
     // console.log(pl);
     // console.log(db);
     // console.log(tools);
+    let lastOS = [];
     Skillsets.find().then((result) => {
         skillsetData.push(result);
         let temp = []
@@ -126,8 +127,9 @@ app.post("/upload", function(req, res) {
         for(let i = 0 ; i < allSkill.length; i++){
             for(let j = 0 ; j < pl.length; j++){
                 if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[i])[2])[1].toLowerCase()){
-                    tools.push(Object.values(Object.values(pl[i])[2])[1]);
-                    break;
+                    if(Object.values(Object.values(pl[i])[2])[2] == "Operating System"){
+                        lastOS.push(Object.values(Object.values(pl[i])[2])[1]);
+                    }
                 }
             }
         }
@@ -157,7 +159,7 @@ app.post("/upload", function(req, res) {
         os : os,
         pl : pl,
         db : db,
-        tools : tools,
+        tools : lastOS,
         majorExp : req.body.majorExp,
         minorSkill : req.body.minorSkill,
         minorExp : req.body.minorExp,
