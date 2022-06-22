@@ -123,9 +123,10 @@ app.post("/upload", function(req, res) {
     for(let i = 0 ; i < allSkill.length ; i++ ){
         for(let j = 0 ; j< skillsetData.length; j++){
             if(allSkill[i].toLowerCase() === skillsetData[j].skill.toLowerCase()){
-                if(skillsetData[j].category === "Programming Language"){
-                    pl.push(allSkill[i]);
-                }
+                // if(skillsetData[j].category === "Programming Language"){
+                //     pl.push(allSkill[i]);
+                // }
+                pl.push(allSkill[i]);
             }
         }
     }
