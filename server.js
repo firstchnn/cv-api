@@ -116,6 +116,8 @@ app.post("/upload", function(req, res) {
     // console.log(tools);
     let lastOS = [];
     let lastPL = [];
+    let lastDB = [];
+    let lastIDE = [];
     Skillsets.find().then((result) => {
         skillsetData.push(result);
         let temp = []
@@ -127,12 +129,20 @@ app.post("/upload", function(req, res) {
         }
         for(let i = 0 ; i < allSkill.length; i++){
             for(let j = 0 ; j < pl.length; j++){
-                if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[i])[2])[1].toLowerCase()){
-                    if(Object.values(Object.values(pl[i])[2])[2] == "Operating System"){
-                        lastOS.push(Object.values(Object.values(pl[i])[2])[1]);
+                if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[j])[2])[1].toLowerCase()){
+                    if(Object.values(Object.values(pl[j])[2])[2] == "Operating System"){
+                        lastOS.push(Object.values(Object.values(pl[j])[2])[1]);
                         break;
-                    }else if(Object.values(Object.values(pl[i])[2][2] == "Programming Language")){
-                        lastPL.push(Object.values(Object.values(pl[i])[2])[1]);
+                    }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
+                        lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
+                        break;
+                    }
+                    else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
+                        lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
+                        break;
+                    }
+                    else if(Object.values(Object.values(pl[j])[2][2] == "Tools and IDE")){
+                        lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
                         break;
                     }
                 }
@@ -161,10 +171,10 @@ app.post("/upload", function(req, res) {
         totalExp : req.body.exp,
         gpa : req.body.gpa,
         majorSkill : req.body.majorSkill,
-        os : os,
+        os : lastOS,
         pl : lastPL,
-        db : db,
-        tools : lastOS,
+        db : lastDB,
+        tools : lastIDE,
         majorExp : req.body.majorExp,
         minorSkill : req.body.minorSkill,
         minorExp : req.body.minorExp,
