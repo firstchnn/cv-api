@@ -140,7 +140,7 @@ app.post("/upload", function(req, res) {
                     }
                     if(Object.values(Object.values(pl[j])[2][2] === "Database")){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastDB.push(Object.values(Object.values(pl[j])[2])[2]);
+                        lastDB.push(Object.values(Object.values(pl[j])[2])[2] === "Database");
                         break;
                     }
                     if(Object.values(Object.values(pl[j])[2][2] === "Programming Language")){
