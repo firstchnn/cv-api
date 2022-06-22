@@ -131,18 +131,18 @@ app.post("/upload", function(req, res) {
                 //is this skillsets contain this skill input
                 if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[j])[2])[1].toLowerCase()){
                     //is skill input category is os
-                    if(Object.values(Object.values(pl[j])[2])[2].toLowerCase() == "Operating System".toLowerCase()){
+                    if(Object.values(Object.values(pl[j])[2])[2] == "Operating System"){
                         lastOS.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastOS.push(i);
                         break;
                      //is skill input category is programming lang
-                    }else if(Object.values(Object.values(pl[j])[2][2].toLowerCase() == "Programming Language".toLowerCase())){
+                    }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastPL.push(i);
                         break;
                     }
                      //is skill input category is database
-                    else if(Object.values(Object.values(pl[j])[2][2].toLowerCase() == "Database".toLowerCase())){
+                    else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
                         lastDB.push(i);
                         break;
