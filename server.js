@@ -109,37 +109,28 @@ app.post("/upload", function(req, res) {
     let pl = [];
     let db = [];
     let tools = [];
-    // os,pl,db,tools = classifier(os,pl,db,tools,allSkill);
-    // console.log(os);
-    // console.log(pl);
-    // console.log(db);
-    // console.log(tools);
     Skillsets.find().then((result) => {
         skillsetData.push(result);
+        let temp = [];
         for(let i = 0; i < result.length; i++){
-            pl.push(result[i]);
+            temp.push(result[i]);
         }
         for(let i = 0 ; i < pl.length; i++){
-            db.push(Object.values(Object.values(pl[i])[2])[1]);
+            skillsetData.push(Object.values(Object.values(pl[i])[2]));
         }
     }).catch((err) => {
         console.log(err);
     })
-
-    // for(let i = 0; i < skillsetData.length; i++) {
-    //     pl.push(skillsetData[i].skill);
-    // }
-
-    // for(let i = 0 ; i < allSkill.length ; i++ ){
-    //     for(let j = 0 ; j< skillsetData.length; j++){
-    //         if(allSkill[i].toLowerCase() === skillsetData[j].skill.toLowerCase()){
-    //             // if(skillsetData[j].category === "Programming Language"){
-    //             //     pl.push(allSkill[i]);
-    //             // }
-    //             pl.push(allSkill[i]);
-    //         }
-    //     }
-    // }
+    for(let i = 0; i < allSkill.length; i++){
+        for(let j = 0; j < skillsetData.length; j++){
+            if(allSkill[i] == skillsetData[j][1]){
+                if(skillsetData[j][2] == "Operating System"){
+                    os.push(allSkill[i]);
+                    break;
+                }
+            }
+        }
+    }
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
