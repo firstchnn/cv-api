@@ -138,7 +138,7 @@ app.post("/upload", function(req, res) {
                      //is skill input category is programming lang
                     }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
-                        lastPL.push(i);
+                        lastPL.push(Object.values(Object.values(pl[j])[2])[2]);
                         break;
                     }
                      //is skill input category is database
