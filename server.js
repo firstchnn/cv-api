@@ -162,7 +162,7 @@ app.post("/upload", function(req, res) {
         gpa : req.body.gpa,
         majorSkill : req.body.majorSkill,
         os : os,
-        pl : pl,
+        pl : lastPL,
         db : db,
         tools : lastOS,
         majorExp : req.body.majorExp,
