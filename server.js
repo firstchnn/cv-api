@@ -103,6 +103,7 @@ app.get("/download", function(req,res) {
 app.post("/upload", function(req, res) {
     
     let allSkill = req.body.majorSkill.split(',');
+    console.log(allSkill);
     let os = getOS(allSkill);
     let pl = getPL(allSkill);
     let db = getDB(allSkill);
