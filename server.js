@@ -260,14 +260,14 @@ async function getOS(allSkill) {
             let db = client.db('applicantDB')
             let collection = db.collection('skillsets')
             let majorSkill = collection.find({});
-            for(let i = 0; i < majorSkill.length ; i++){
-                if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
-                    if(majorSkill[i].category === "Operating System"){
-                        os.push(allSkill[i]);
-                    }
-                }
-            }
-            return os;
+            // for(let i = 0; i < majorSkill.length ; i++){
+            //     if(allSkill[i].toLowerCase() === majorSkill[i].skill.toLowerCase()){
+            //         if(majorSkill[i].category === "Operating System"){
+            //             os.push(allSkill[i]);
+            //         }
+            //     }
+            // }
+            return majorSkill;
             // client.close()
         }
 
