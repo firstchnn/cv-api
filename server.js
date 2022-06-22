@@ -31,10 +31,10 @@ const applicantSchema = {
     totalExp : Number,
     gpa : Decimal128,
     majorSkill : String,
-    // os : Array,
-    // pl : Array,
-    // db : Array,
-    // tools : Array,
+    os : Array,
+    pl : Array,
+    db : Array,
+    tools : Array,
     majorExp : Number,
     minorSkill : String,
     minorExp : Number,
@@ -101,16 +101,16 @@ app.get("/download", function(req,res) {
 })
 
 app.post("/upload", function(req, res) {
-    let os = [];
-    let pl = [];
-    let db = [];
-    let tools = [];
+    let os = ["ios"];
+    let pl = ["java","python"];
+    let db = ["mongodb","oracle"];
+    let tools = ["vscode"];
     let allSkill = req.body.majorSkill.split(',');
-    os,pl,db,tools = classifier(os,pl,db,tools,allSkill);
-    console.log(os);
-    console.log(pl);
-    console.log(db);
-    console.log(tools);
+    // os,pl,db,tools = classifier(os,pl,db,tools,allSkill);
+    // console.log(os);
+    // console.log(pl);
+    // console.log(db);
+    // console.log(tools);
     
     let file = { name: req.body.name,
         totalExp : req.body.exp,
