@@ -117,7 +117,7 @@ app.post("/upload", function(req, res) {
     Skillsets.find().then((result) => {
         skillsetData.push(result);
         for(let i = 0; i < result.length; i++){
-            pl.push(result[i][1]);
+            pl.push(result[i]);
         }
     }).catch((err) => {
         console.log(err);
