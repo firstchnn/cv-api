@@ -115,6 +115,7 @@ app.post("/upload", function(req, res) {
     // console.log(db);
     // console.log(tools);
     let lastOS = [];
+    let lastPL = [];
     Skillsets.find().then((result) => {
         skillsetData.push(result);
         let temp = []
@@ -129,6 +130,10 @@ app.post("/upload", function(req, res) {
                 if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[i])[2])[1].toLowerCase()){
                     if(Object.values(Object.values(pl[i])[2])[2] == "Operating System"){
                         lastOS.push(Object.values(Object.values(pl[i])[2])[1]);
+                        break;
+                    }else if(Object.values(Object.values(pl[i])[2][2] == "Programming Language")){
+                        lastPL.push(Object.values(Object.values(pl[i])[2])[1]);
+                        break;
                     }
                 }
             }
