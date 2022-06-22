@@ -111,7 +111,7 @@ app.post("/upload", function(req, res) {
     let db = [];
     let tools = [];
     Skillsets.find().then((result) => {
-        skillsetData.push(result);
+        // skillsetData.push(result);
         for(let i = 0; i < result.length; i++){
             temp.push(result[i]);
         }
