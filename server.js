@@ -120,7 +120,6 @@ app.post("/upload", function(req, res) {
     let lastIDE = [];
     Skillsets.find().then((result) => {
         skillsetData.push(result);
-        let temp = []
         for(let i = 0; i < result.length; i++){
             pl.push(result[i]);
         }
@@ -129,20 +128,29 @@ app.post("/upload", function(req, res) {
         }
         for(let i = 0 ; i < allSkill.length; i++){
             for(let j = 0 ; j < pl.length; j++){
+                //is this skillsets contain this skill input
                 if(allSkill[i].toLowerCase() == Object.values(Object.values(pl[j])[2])[1].toLowerCase()){
+                    //is skill input category is os
                     if(Object.values(Object.values(pl[j])[2])[2] == "Operating System"){
                         lastOS.push(Object.values(Object.values(pl[j])[2])[1]);
+                        lastOS.push(i);
                         break;
+                     //is skill input category is programming lang
                     }else if(Object.values(Object.values(pl[j])[2][2] == "Programming Language")){
                         lastPL.push(Object.values(Object.values(pl[j])[2])[1]);
+                        lastPL.push(i);
                         break;
                     }
+                     //is skill input category is database
                     else if(Object.values(Object.values(pl[j])[2][2] == "Database")){
                         lastDB.push(Object.values(Object.values(pl[j])[2])[1]);
+                        lastDB.push(i);
                         break;
                     }
-                    else if(Object.values(Object.values(pl[j])[2][2] == "Tools and IDE")){
+                     //is skill input category is tools
+                    else{
                         lastIDE.push(Object.values(Object.values(pl[j])[2])[1]);
+                        lastIDE.push(i);
                         break;
                     }
                 }
