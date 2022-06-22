@@ -120,7 +120,7 @@ app.post("/upload", function(req, res) {
             pl.push(result[i]);
         }
         for(let i = 0 ; i < pl.length; i++){
-            db.push(i);
+            db.push(pl[i]);
         }
     }).catch((err) => {
         console.log(err);
