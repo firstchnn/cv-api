@@ -105,7 +105,7 @@ app.post("/upload", function(req, res) {
     let allSkill = req.body.majorSkill.split(',');
     console.log(allSkill);
     let skillsetData = [];
-    let os = allSkill;
+    let os = [];
     let pl = [];
     let db = [];
     let tools = [];
@@ -123,8 +123,8 @@ app.post("/upload", function(req, res) {
     })
     for(let i = 0; i < allSkill.length; i++){
         for(let j = 0; j < skillsetData.length; j++){
-            if(allSkill[i] == skillsetData[j][1]){
-                if(skillsetData[j][2] == "Operating System"){
+            if(allSkill[i] === skillsetData[j][1]){
+                if(skillsetData[j][2] === "Operating System"){
                     os.push(allSkill[i]);
                     break;
                 }
